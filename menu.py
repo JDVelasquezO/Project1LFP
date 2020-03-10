@@ -1,5 +1,4 @@
-import os
-from AFD.create import Create
+from AFD.create import CreateAFD
 
 def menu():    
     while True:
@@ -13,8 +12,9 @@ def menu():
         opc = int(input("Escoje una opcion: "))
 
         if opc == 1:
-            create = Create()
-            create.name()
+            afd = CreateAFD()
+            afd.name()
+            afd.menuAFD()
             
         if opc == 6:
             break
