@@ -3,7 +3,9 @@ class CreateAFD:
     
     states = []
     words = []
+    initial_state = ""
     states_acceptance = []
+    transitions = []
     
     def name(self):
         os.system('clear')
@@ -22,16 +24,16 @@ class CreateAFD:
             
             os.system('clear')
             if opcAFD == 1:
-                nStates = int(input("Numero de estados: "))
+                n_states = int(input("Numero de estados: "))
                 i = 1
-                for i in range(nStates):
+                for i in range(n_states):
                     state = input(f"Estado {i}: ")
                     self.states.append(state)
             
             if opcAFD == 2:
-                nWords = int(input("Numero de palabras en el alfabeto: "))
+                n_words = int(input("Numero de palabras en el alfabeto: "))
                 i = 1
-                for i in range(nWords):
+                for i in range(n_words):
                     word = input(f"Palabra no {i}: ")
                     self.words.append(word)
             
@@ -39,12 +41,12 @@ class CreateAFD:
                 print("Estados existentes")
                 for state in self.states:
                     print(f"Estado {state}")
-                initial_state = input("Coloque el nombre del estado inicial: ")
+                self.initial_state = input("Coloque el nombre del estado inicial: ")
                 
-                if initial_state not in self.states:
-                    print(f"El estado {initial_state} no pertenece al conjunto de estados")
+                if self.initial_state not in self.states:
+                    print(f"El estado {self.initial_state} no pertenece al conjunto de estados")
                 else:
-                    print(f"El estado {initial_state} es inicial ahora")
+                    print(f"El estado {self.initial_state} es inicial ahora")
 
             if opcAFD == 4:
                 print("Estados existentes")
@@ -64,6 +66,28 @@ class CreateAFD:
                             self.states_acceptance.append(state)
                             break
             
+            if opcAFD == 5:
+                print("1. Modo 1")
+                print("2. Modo 2")
+                mode = int(input("Escojer un modo de transiciones: "))
+
+                if mode == 1:
+                    print("Modo 1")
+                    print("Ingresar con la siguiente notación: A,B;a")
+                    print("Estados existentes")
+                    for state in self.states:
+                        print(f"Estado {state}")
+
+                    print("Letras existentes")
+                    for word in self.words:
+                        print(f"Estado {word}")
+                    
+                    n_transition = int(input("Numero de transiciones: "))
+
+                    i = 1
+                    for i in range(n_transition):
+                        transition = input(f"Transicion {i}: ")
+                        self.transitions.append(transition)
+            
             if opcAFD == 6:
                 break
-
