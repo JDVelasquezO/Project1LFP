@@ -6,6 +6,8 @@ class CreateAFD:
     initial_state = ""
     states_acceptance = []
     transitions = []
+    transition = {}
+    data_input = []
     
     def name(self):
         os.system('clear')
@@ -19,7 +21,8 @@ class CreateAFD:
             print("3. Estado Inicial")
             print("4. Estados de aceptación")
             print("5. Transiciones")
-            print("6. Regresar")
+            print("6. Cadena a evaluar")
+            print("7. Regresar")
             opcAFD = int(input('Escoje una opcion: '))
             
             os.system('clear')
@@ -78,7 +81,7 @@ class CreateAFD:
                     for state in self.states:
                         print(f"Estado {state}")
 
-                    print("Letras existentes")
+                    print("Palabras existentes")
                     for word in self.words:
                         print(f"Estado {word}")
                     
@@ -86,8 +89,44 @@ class CreateAFD:
 
                     i = 1
                     for i in range(n_transition):
-                        transition = input(f"Transicion {i}: ")
-                        self.transitions.append(transition)
-            
+                        trans = input(f"Transicion {i}: ")
+                        newTrans = trans.split(";")
+
+                        # key = newTrans[0]
+                        # value = newTrans[1]
+
+                        # self.transition = {
+                        #     "key": key,
+                        #     "value": value
+                        # }
+                        self.transitions.append(newTrans)
+
             if opcAFD == 6:
+
+                words = input("Escriba la palabra a evaluar: ")
+
+                word = words.split(";")
+                
+                for w in word:
+                    print(w)
+
+                # n_inputEvaluate = int(input("Numero de palabras a evaluar: "))
+
+                # i = 1
+                # for i in range(n_inputEvaluate):
+                #     data = input(f"Palabra no {i}: ")
+                #     self.data_input.append(data)
+
+                # # actual = self.initial_state
+                # values = []
+                # for t in self.transitions:
+                #     values.append(t["value"])
+
+                # # j = 0
+                # # for i in self.data_input:
+                # #     if i == values[j]:
+                # #         print(f"Existe {i} en la posicion {j} = {values[j]}")
+                # #     j = j + 1
+            
+            if opcAFD == 7:
                 break
