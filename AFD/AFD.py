@@ -79,4 +79,5 @@ class AFD():
 
             else:
                 print(f"{w} no pertenece al lenguaje")
+                break
          

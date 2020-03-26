@@ -21,4 +21,4 @@ afd.setTransitions('B,C;b')
 afd.setTransitions('B,A;a')
 afd.setTransitions('C,D;b')
 
-afd.evaluateString('a b a a b b')
+afd.evaluateString('a b a b b')
