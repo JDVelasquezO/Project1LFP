@@ -58,7 +58,7 @@ class AFD():
         return self.transitions
 
     def evaluateString(self, words):
-        word = words.split(" ")
+        word = words
         actual = self.initialState
         for w in word:
             if w in self.alphabet:

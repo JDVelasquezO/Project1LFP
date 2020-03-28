@@ -1,4 +1,5 @@
-from AFD.create import CreateAFD
+from AFD.createAFD import CreateAFD
+from Grammars.CreateGrammar import CreateGrammar
 
 def menu():    
     while True:
@@ -15,6 +16,11 @@ def menu():
             afd = CreateAFD()
             afd.name()
             afd.menuAFD()
+
+        elif opc == 2:
+            grammar = CreateGrammar()
+            grammar.name()
+            grammar.menuGrammar()
             
         if opc == 6:
             break
