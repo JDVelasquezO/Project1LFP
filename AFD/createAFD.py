@@ -13,6 +13,7 @@ class CreateAFD:
 
     def menuAFD(self):
         while True:
+            print("Menu de AFD")
             print("1. Ingresar Estados")
             print("2. Ingresar Alfabeto")
             print("3. Estado Inicial")
