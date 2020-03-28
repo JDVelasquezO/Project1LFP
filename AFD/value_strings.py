@@ -2,22 +2,30 @@ from AFD import AFD
 
 afd = AFD('afd1')
 
+afd.setStates('S')
 afd.setStates('A')
 afd.setStates('B')
-afd.setStates('C')
+afd.setStates('AP')
+afd.setStates('BP')
 
+afd.setAlphabet('a')
+afd.setAlphabet('b')
 afd.setAlphabet('0')
 afd.setAlphabet('1')
+afd.setAlphabet('m')
+afd.setAlphabet('s')
 
-afd.setInitialState('A')
+afd.setInitialState('S')
 
-afd.setAcceptanceStates('C')
+afd.setAcceptanceStates('AP')
+afd.setAcceptanceStates('BP')
 
-afd.setTransitions('A,A;1')
-afd.setTransitions('A,B;0')
-afd.setTransitions('B,B;1')
-afd.setTransitions('B,C;0')
-afd.setTransitions('C,C;0')
-afd.setTransitions('C,C;1')
+afd.setTransitions('S,A;a')
+afd.setTransitions('A,AP;0')
+afd.setTransitions('AP,AP;0')
+afd.setTransitions('AP,AP;1')
+afd.setTransitions('S,B;b')
+afd.setTransitions('B,BP;m')
+afd.setTransitions('BP,BP;s')
 
-afd.evaluateString('101010')
+afd.evaluateString('bmss')
