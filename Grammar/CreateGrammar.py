@@ -50,6 +50,9 @@ class CreateGrammar():
                 for i in range(n_prods):
                     prod = input(f"Produccion {i}: ")
                     self.grammar.setProductions(prod)
+
+            if opcGram == 5:
+                string = input("Introducir la cadena a evaluar: ")
             
             if opcGram == 6:
                 break
