@@ -42,6 +42,7 @@ class Grammar():
         new_Prod_epsilon = {}
         new_Grammar = {}
         actualStatus = ""
+        msgNotRecursion = ""
 
         if self.name == name:
             NT_derived = ""
@@ -53,24 +54,32 @@ class Grammar():
                     new_Prod["NT"] = NT_derived
                     new_Prod["E"] = production["E"][1] + NT_derived
                     new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E']}"
+                    new_Prod_epsilon["NT"] = NT_derived
                     new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
                     new_Prods.append(new_Prod)
                     new_Prods.append(new_Prod_epsilon)
+                    saved_Prods.append(production)
                     
                     new_Prod = {}
                     new_Prod_epsilon = {}
                     NT_derived = ""
             
                 if production["NT"] != production["E"][0]:
-                    NT_derived = production["NT"] + "'"
-                    new_T = production["E"][0]
-                    new_E =  new_T + NT_derived
+                    for savedProds in saved_Prods:
+                        if production["NT"] == savedProds["NT"]:
+                            NT_derived = production["NT"] + "'"
+                            new_T = production["E"][0]
+                            new_E =  new_T + NT_derived
 
-                    new_Grammar["NT"] = production["NT"]
-                    new_Grammar["E"] = new_E
-                    new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E']}"
-                    new_Prods.append(new_Grammar)
-                    new_Grammar = {}
+                            new_Grammar["NT"] = production["NT"]
+                            new_Grammar["E"] = new_E
+                            new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E']}"
+                            new_Prods.append(new_Grammar)
+                            new_Grammar = {}
+                            break
+                    
+                    if production["NT"] not in saved_Prods:
+                        msgNotRecursion += f"{production['String']} no tiene recursividad \n"
 
         unrepairedString = "Cadena original: \n"
         for prod in self.productions:
@@ -78,6 +87,7 @@ class Grammar():
         unrepairedString += "---------------------------------------\n"
 
         repairedString = "Cadena arreglada: \n"
+        repairedString += msgNotRecursion
         for prod in new_Prods:
             repairedString += prod['String'] + "\n"
             
