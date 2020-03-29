@@ -1,5 +1,5 @@
 import os
-from Grammars.Grammar import Grammar
+from Grammar.Grammar import Grammar
 
 class CreateGrammar():
     

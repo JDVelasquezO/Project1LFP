@@ -6,6 +6,7 @@ class Grammar():
     productions = []
     initial_non_terminal = ""
     new_productions = []
+    all_grams = []
 
     def __init__(self, name):
         self.name = name
@@ -34,6 +35,12 @@ class Grammar():
                 objectProduction["E"].append(e)
         
         self.productions.append(objectProduction)
+
+    def keepGrams(self, gram):
+        self.all_grams.append(gram)
+
+    def getGrams(self):
+        return self.all_grams
 
     def getTransformedGrammar(self, name):
         new_Prods = []

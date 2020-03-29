@@ -1,5 +1,5 @@
 from AFD.createAFD import CreateAFD
-from Grammars.CreateGrammar import CreateGrammar
+from Grammar.CreateGrammar import CreateGrammar
 
 def menu():    
     while True:

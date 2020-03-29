@@ -21,4 +21,7 @@ grammar.setProductions("A>0")
 grammar.setProductions("B>B s")
 grammar.setProductions("B>m")
 
-print(grammar.getTransformedGrammar("grammar1"))
+grammar.keepGrams(grammar)
+
+# print(grammar.getTransformedGrammar("grammar1"))
+print(grammar.getGrams())
