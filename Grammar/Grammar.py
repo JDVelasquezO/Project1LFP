@@ -5,6 +5,7 @@ class Grammar():
     terminals = []
     productions = []
     initial_non_terminal = ""
+    new_productions = []
 
     def __init__(self, name):
         self.name = name
@@ -24,7 +25,8 @@ class Grammar():
 
             objectProduction = {
                 "NT": nt,
-                "E": []
+                "E": [],
+                "String": f"{production}"
             }
 
         for e in exp:
@@ -34,8 +36,12 @@ class Grammar():
         self.productions.append(objectProduction)
 
     def getTransformedGrammar(self, name):
+        new_Prods = []
+        saved_Prods = []
         new_Prod = {}
+        new_Prod_epsilon = {}
         new_Grammar = {}
+        actualStatus = ""
 
         if self.name == name:
             NT_derived = ""
@@ -47,16 +53,35 @@ class Grammar():
                     new_Prod["NT"] = NT_derived
                     new_Prod["E"] = production["E"][1] + NT_derived
                     new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E']}"
-                
+                    new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
+                    new_Prods.append(new_Prod)
+                    new_Prods.append(new_Prod_epsilon)
+                    
+                    new_Prod = {}
+                    new_Prod_epsilon = {}
+                    NT_derived = ""
+            
                 if production["NT"] != production["E"][0]:
+                    NT_derived = production["NT"] + "'"
                     new_T = production["E"][0]
                     new_E =  new_T + NT_derived
+
                     new_Grammar["NT"] = production["NT"]
                     new_Grammar["E"] = new_E
                     new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E']}"
-                    break
-    
-        return f"{new_Prod['String']}" + "\n" + f"{new_Grammar['String']}"
+                    new_Prods.append(new_Grammar)
+                    new_Grammar = {}
+
+        unrepairedString = "Cadena original: \n"
+        for prod in self.productions:
+            unrepairedString += f"{prod['String']}\n"
+        unrepairedString += "---------------------------------------\n"
+
+        repairedString = "Cadena arreglada: \n"
+        for prod in new_Prods:
+            repairedString += prod['String'] + "\n"
+            
+        return unrepairedString + repairedString
              
     def setInitialNT(self, nt):
         self.initial_non_terminal = nt
