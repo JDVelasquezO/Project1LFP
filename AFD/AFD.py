@@ -81,35 +81,38 @@ class AFD():
         for w in word:
             if w not in self.alphabet:
                 return False
-        if word[-1] not in self.acceptanceStates:
+        if " No se llego a estado de aceptacion" in self.evaluateString(word):
             return False
         return True
+
+    def valuateAcceptState(self):
+        return False
 
     def evaluateString(self, words):
         actual = self.initialState
         msgFinal = ""
+        for w in words:
+            if w in self.alphabet:
+                for item in self.transitions:
+                    if w == item['t']:
+                        first = item['fS']
+                        last = item['lS']
 
-        if not self.onlyEvaluate(words):
-            msgFinal += "Error"
-        else:
-            for w in words:
-                if w in self.alphabet:
-                    for item in self.transitions:
-                        if w == item['t']:
-                            first = item['fS']
-                            last = item['lS']
+                        if first == actual:
+                            msgFinal += f"{first},{last},{w};"
+                            # print(f"{first}, {last}, {w};")
+                            actual = last
 
-                            if first == actual:
-                                msgFinal += f"{first},{last},{w};"
-                                # print(f"{first}, {last}, {w};")
-                                actual = last
-
-                                if actual in self.acceptanceStates:
-                                    # print("Se llego a  estado de aceptacion")
-                                    break
-
+                            if actual in self.acceptanceStates:
+                                # print("Se llego a  estado de aceptacion")
                                 break
-            msgFinal += " valida"
+
+                            break
+        if actual not in self.acceptanceStates:
+            msgFinal += " No se llego a estado de aceptacion"
+            self.valuateAcceptState()
+        else:
+            msgFinal += " Válida"
             
         return msgFinal
          

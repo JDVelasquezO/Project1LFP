@@ -44,4 +44,7 @@ if (afd.onlyEvaluate('cvcccvvvcvvvc')):
 else:
     print("Cadena invalida")
 
-# print(afd.evaluateString('cvcccvvvcvvvc'))
+# print(afd.evaluateString('vvvcvvvcvc'))
+
+# vvvcvvvcvc Si llega
+# cvcccvvvcvvvc No llega
