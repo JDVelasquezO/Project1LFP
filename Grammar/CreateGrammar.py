@@ -18,8 +18,9 @@ class CreateGrammar():
             print("2. Ingresar Terminales")
             print("3. No Terminal Inicial")
             print("4. Producciones")
-            print("5. Evaluar Cadenas")
-            print("6. Salir")
+            print("5. Mostrar Gramática Transformada")
+            print("6. Ayuda")
+            print("7. Salir")
             opcGram = int(input('Escoje una opcion: '))
 
             os.system('clear')
@@ -67,7 +68,19 @@ class CreateGrammar():
                 os.system('clear')
 
             if opcGram == 5:
-                string = input("Introducir la cadena a evaluar: ")
+                name = input("Ingrese el nombre de la gramática: ")
+                os.system('clear')
+                while name != self.getName():
+                    print("Ese nombre no esta registrado")
+                    name = input("Ingrese el nombre de la gramática: ")
+                print(self.grammar.getTransformedGrammar(name))
+                os.system('clear')
             
             if opcGram == 6:
+                os.system('clear')
+                print("Lenguajes Formales de Programación")
+                print("Aux: Elmer Real")
+                print("2")
+
+            if opcGram == 7:
                 break

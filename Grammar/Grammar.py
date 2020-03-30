@@ -71,6 +71,9 @@ class Grammar():
     def keepGrams(self, gram):
         self.all_grams.append(gram)
 
+    def getName(self):
+        return self.name
+
     def getGrams(self):
         return self.all_grams
 
