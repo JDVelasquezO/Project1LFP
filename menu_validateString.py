@@ -35,5 +35,14 @@ def menuValidateString(afd, gramm):
                     print(afdClass.evaluateString(string))
             wait_for("", "\n")
 
+        if opc == 3:
+            print("En proceso...")
+
+        if opc == 4:
+            os.system('clear')
+            print("Lenguajes Formales de Programación")
+            print("Aux: Elmer Real")
+            print("2")
+
         if opc == 5:
             break
