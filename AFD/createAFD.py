@@ -30,7 +30,9 @@ class CreateAFD:
                 for i in range(n_states):
                     state = input(f"Estado {i}: ")
                     self.afd.setStates(state)
-            
+                # state = input("Ingresar estado: ")
+                # self.afd.setStates(state)
+
             if opcAFD == 2:
                 n_words = int(input("Numero de palabras en el alfabeto: "))
                 i = 1

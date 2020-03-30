@@ -1,9 +1,10 @@
 from AFD.createAFD import CreateAFD
 from Grammar.CreateGrammar import CreateGrammar
+import os
 
 def menu():    
     while True:
-        print("Menú")
+        print("Menú General")
         print("1. Crear AFD")
         print("2. Crear gramática")
         print("3. Evaluar cadenas")
@@ -11,6 +12,8 @@ def menu():
         print("5. Cargar Archivo")
         print("6. Salir")
         opc = int(input("Escoje una opcion: "))
+
+        os.system('clear')
 
         if opc == 1:
             afd = CreateAFD()
