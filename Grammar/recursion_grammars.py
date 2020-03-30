@@ -23,5 +23,5 @@ grammar.setProductions("A>0")
 grammar.setProductions("B>B s")
 grammar.setProductions("B>m")
 
-grammar.getTransformedGrammar("grammar1")
-grammar.evaluateString("a0010")
+print(grammar.getTransformedGrammar("grammar1"))
+# grammar.evaluateString("a0010")

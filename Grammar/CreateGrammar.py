@@ -13,6 +13,9 @@ class CreateGrammar():
         self.grammar = Grammar(nameGrammar)
         self.array_grammar.append(self.grammar)
 
+    def getGrammar(self):
+        return self.grammar
+
     def menuGrammar(self):
         while True:
             print("Menu de  Gramáticas")

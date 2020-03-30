@@ -24,6 +24,20 @@ def menuValidateString(afd, gramm):
                         print("Cadena válida")
                     else:
                         print("Cadena invalida")
+                else:
+                    break
+            
+            for item in gramm.array_grammar:
+                if (name == item.getName()):
+                    grammClass = gramm.getGrammar()
+                    string = input("Ingrese la cadena a evaluar: ")
+                    # if (grammClass.):
+                    #     print("Cadena válida")
+                    # else:
+                    #     print("Cadena invalida")
+                else:
+                    break
+
             wait_for("", "\n")
 
         if opc == 2:

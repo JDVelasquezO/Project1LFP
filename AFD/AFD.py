@@ -81,6 +81,8 @@ class AFD():
         for w in word:
             if w not in self.alphabet:
                 return False
+        if word[-1] not in self.acceptanceStates:
+            return False
         return True
 
     def evaluateString(self, words):
@@ -107,7 +109,6 @@ class AFD():
                                     break
 
                                 break
-
             msgFinal += " valida"
             
         return msgFinal
