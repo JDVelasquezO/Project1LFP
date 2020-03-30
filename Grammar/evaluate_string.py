@@ -15,6 +15,8 @@ grammar.setNonTerminals("I")
 grammar.setTerminals("c")
 grammar.setTerminals("v")
 
+grammar.setInitialNT("A")
+
 grammar.setProductions("A>c B")
 grammar.setProductions("A>v G")
 grammar.setProductions("B>c C")
@@ -35,3 +37,5 @@ grammar.setProductions("G>c B")
 grammar.setProductions("H>v I")
 grammar.setProductions("H>c B")
 grammar.setProductions("I>c B")
+
+grammar.evaluateString("vvvcvvvcvc")

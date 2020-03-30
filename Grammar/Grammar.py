@@ -5,7 +5,6 @@ class Grammar():
     terminals = []
     productions = []
     initial_non_terminal = ""
-    new_productions = []
     all_grams = []
 
     def __init__(self, name):
@@ -16,6 +15,9 @@ class Grammar():
 
     def setTerminals(self, terminal):
         self.terminals.append(terminal)
+
+    def setInitialNT(self, iNT):
+        self.initial_non_terminal = iNT
 
     def setProductions(self, production):
         nt = production.split(">")[0]
@@ -30,9 +32,12 @@ class Grammar():
                 "String": f"{production}"
             }
 
-        for e in exp:
-            if e in self.terminals or e in self.non_terminals:
-                objectProduction["E"].append(e)
+        if exp == "epsilon":
+            objectProduction["E"].append(exp)
+        else:
+            for e in exp:
+                if e in self.terminals or e in self.non_terminals:
+                    objectProduction["E"].append(e)
         
         self.productions.append(objectProduction)
 
@@ -45,6 +50,7 @@ class Grammar():
     def getTransformedGrammar(self, name):
         new_Prods = []
         saved_Prods = []
+        productions = []
         new_Prod = {}
         new_Prod_epsilon = {}
         new_Grammar = {}
@@ -59,14 +65,18 @@ class Grammar():
                     NT_derived = production["NT"] + "'"
 
                     new_Prod["NT"] = NT_derived
-                    new_Prod["E"] = production["E"][1] + NT_derived
+                    new_Prod["E"] = [f"{production['E'][1]}", f"{NT_derived}"]
                     new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E']}"
                     new_Prod_epsilon["NT"] = NT_derived
+                    new_Prod_epsilon["E"] = "epsilon"
                     new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
                     new_Prods.append(new_Prod)
                     new_Prods.append(new_Prod_epsilon)
                     saved_Prods.append(production)
                     
+                    productions.append(new_Prod)
+                    productions.append(new_Prod_epsilon)
+
                     new_Prod = {}
                     new_Prod_epsilon = {}
                     NT_derived = ""
@@ -76,17 +86,19 @@ class Grammar():
                         if production["NT"] == savedProds["NT"]:
                             NT_derived = production["NT"] + "'"
                             new_T = production["E"][0]
-                            new_E =  new_T + NT_derived
+                            new_E =  [f"{new_T}", f"{NT_derived}"]
 
                             new_Grammar["NT"] = production["NT"]
                             new_Grammar["E"] = new_E
                             new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E']}"
                             new_Prods.append(new_Grammar)
+                            productions.append(new_Grammar)
                             new_Grammar = {}
                             break
                     
                     if production["NT"] not in saved_Prods:
                         msgNotRecursion += f"{production['String']} no tiene recursividad \n"
+                        productions.append(production)
 
         unrepairedString = "Cadena original: \n"
         for prod in self.productions:
@@ -97,9 +109,26 @@ class Grammar():
         repairedString += msgNotRecursion
         for prod in new_Prods:
             repairedString += prod['String'] + "\n"
+
+        self.productions = productions
             
         return unrepairedString + repairedString
-             
+
+    def evaluateString(self, words):
+        actual = self.initial_non_terminal
+        for w in words:
+            for item in self.productions:
+                if w == item['E'][0]:
+                    nowTerminal = item['NT']
+                    if len(item['E']) > 1:
+                        nextTerminal = item['E'][1]
+
+                    if nowTerminal == actual:
+                        print(f"Orden correcto {nowTerminal} > {w} y va a {nextTerminal}")
+                        actual = nextTerminal
+        
+        print(f"{actual} > epsilon")
+
     def setInitialNT(self, nt):
         self.initial_non_terminal = nt
 

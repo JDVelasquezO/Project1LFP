@@ -13,6 +13,8 @@ grammar.setTerminals("1")
 grammar.setTerminals("s")
 grammar.setTerminals("m")
 
+grammar.setInitialNT("S")
+
 grammar.setProductions("S>a A")
 grammar.setProductions("S>b B")
 grammar.setProductions("A>A 0")
@@ -21,7 +23,5 @@ grammar.setProductions("A>0")
 grammar.setProductions("B>B s")
 grammar.setProductions("B>m")
 
-grammar.keepGrams(grammar)
-
-# print(grammar.getTransformedGrammar("grammar1"))
-print(grammar.getGrams())
+grammar.getTransformedGrammar("grammar1")
+grammar.evaluateString("a0010")
