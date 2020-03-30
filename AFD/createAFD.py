@@ -1,5 +1,6 @@
 import os
 from AFD.AFD import AFD
+from press_enter import wait_for
 
 class CreateAFD:
 
@@ -19,11 +20,12 @@ class CreateAFD:
             print("3. Estado Inicial")
             print("4. Estados de aceptación")
             print("5. Transiciones")
-            print("6. Cadena a evaluar")
+            print("6. Ayuda")
             print("7. Regresar")
             opcAFD = int(input('Escoje una opcion: '))
             
             os.system('clear')
+            
             if opcAFD == 1:
                 # n_states = int(input("Numero de estados: "))
                 # i = 1
@@ -91,6 +93,7 @@ class CreateAFD:
                 print("2. Modo 2")
                 mode = int(input("Escojer un modo de ingresar transiciones: "))
 
+                os.system('clear')
                 if mode == 1:
                     print("Modo 1")
                     print("Ingresar con la siguiente notación: A,B;a")
@@ -113,23 +116,14 @@ class CreateAFD:
                         trans = input(f"Ingresar Transicion: ")
                         os.system('clear')
 
-                # elif mode == 2:
-                #     print("Modo 2")
-                #     quantT = input("Ingresar cantidad de terminales: ")
-                #     quantN = input("Ingresar la cantidad de no terminales: ")
-
-                #     tansitions = []
-                #     trans = ""
-
-                #     matriz = []
-                #     for i in range(quantT):
-                #         matriz.append([])
-                #         for j in range(quantN):
-                #             matriz[i].append(None)
+                elif mode == 2:
+                    print("En proceso")
 
             if opcAFD == 6:
-                words = input("Escriba la palabra a evaluar: ")
-                self.afd.evaluateString(words)
+                os.system('clear')
+                print("Lenguajes Formales de Programación")
+                print("Aux: Elmer Real")
+                print("2")
             
             if opcAFD == 7:
                 break

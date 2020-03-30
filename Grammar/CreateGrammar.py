@@ -25,31 +25,46 @@ class CreateGrammar():
             os.system('clear')
 
             if opcGram == 1:
-                n_NT = int(input("Numero de No Terminales: "))
-                i = 1
-                for i in range(n_NT):
-                    nt = input(f"NT {i}: ")
-                    self.grammar.setNonTerminals(nt)
+                # n_NT = int(input("Numero de No Terminales: "))
+                # i = 1
+                # for i in range(n_NT):
+                nt = input(f"Ingresar No Terminal: ")
+                os.system('clear')
+                while (not self.grammar.setNonTerminals(nt)):
+                    print("Elemento ya existente. Intente con otro")
+                    nt = input(f"Ingresar No Terminal: ")
+                os.system('clear')
 
             if opcGram == 2:
-                n_T = int(input("Numero de Terminales: "))
-                i = 1
-                for i in range(n_T):
-                    t = input(f"Terminal {i}: ")
-                    self.grammar.setTerminals(t)
+                # n_T = int(input("Numero de Terminales: "))
+                # i = 1
+                # for i in range(n_T):
+                t = input(f"Ingresar Terminal: ")
+                os.system('clear')
+                while (self.grammar.setTerminals(t)):
+                    print("Elemento ya existente. Intente con otro")
+                    t = input(f"Ingresar Terminal: ")
+                os.system('clear')
 
             if opcGram == 3:
                 init_nt = input("Digita el NT inicial: ")
-                self.grammar.setInitialNT(init_nt)
+                os.system('clear')
+                while (not self.grammar.setInitialNT(init_nt)):
+                    print("El NT no existe en el conjunto. Intente de nuevo")
+                    init_nt = input("Digita el NT inicial: ")
+                os.system('clear')
 
             if opcGram == 4:
                 print("Ingresar las producciones con la notación BNF")
                 print("Notacion BNF: <NT> > <E>")
-                n_prods = int(input("Numero de gramaticas: "))
+                # n_prods = int(input("Numero de gramaticas: "))
 
-                for i in range(n_prods):
-                    prod = input(f"Produccion {i}: ")
-                    self.grammar.setProductions(prod)
+                # for i in range(n_prods):
+                prod = input(f"Ingresar Produccion: ")
+                os.system('clear')
+                while (not self.grammar.setProductions(prod)):
+                    print("La producción ya existe. Intente de nuevo")
+                os.system('clear')
 
             if opcGram == 5:
                 string = input("Introducir la cadena a evaluar: ")

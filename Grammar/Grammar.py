@@ -11,16 +11,28 @@ class Grammar():
         self.name = name
 
     def setNonTerminals(self, nTerminal):
-        self.non_terminals.append(nTerminal)
+        if nTerminal in self.non_terminals:
+            return False
+        else:
+            self.non_terminals.append(nTerminal)
+            return True
 
     def setTerminals(self, terminal):
-        self.terminals.append(terminal)
+        if terminal in self.terminals:
+            return False
+        else:
+            self.terminals.append(terminal)
+            return True
 
     def setInitialNT(self, iNT):
-        self.initial_non_terminal = iNT
+        if iNT not in self.non_terminals:
+            return False
+        else:
+            self.initial_non_terminal = iNT
+            return True
 
-    def setProductions(self, production):
-        nt = production.split(">")[0]
+    def createProduction(self, production):
+        nt = production.split(">")[0].strip()
         exp = production.split(">")[1]
         objectProduction = {}
 
@@ -40,6 +52,21 @@ class Grammar():
                     objectProduction["E"].append(e)
         
         self.productions.append(objectProduction)
+
+    def setProductions(self, production):
+        if production in self.productions:
+            return False
+        else:
+            if production.find("|"):
+                newProd = production.split("|")
+                for item in newProd:
+                    production = item
+                    self.createProduction(production)
+
+            else:
+                self.createProduction(production)
+
+            return True
 
     def keepGrams(self, gram):
         self.all_grams.append(gram)

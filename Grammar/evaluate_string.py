@@ -17,8 +17,8 @@ grammar.setTerminals("v")
 
 grammar.setInitialNT("A")
 
-grammar.setProductions("A>c B")
-grammar.setProductions("A>v G")
+grammar.setProductions("A>c B | A>v G")
+# grammar.setProductions("A>v G")
 grammar.setProductions("B>c C")
 grammar.setProductions("B>v D")
 grammar.setProductions("B>epsilon")
