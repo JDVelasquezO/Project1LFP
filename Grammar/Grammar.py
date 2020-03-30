@@ -33,7 +33,7 @@ class Grammar():
 
     def createProduction(self, production):
         nt = production.split(">")[0].strip()
-        exp = production.split(">")[1]
+        exp = production.split(">")[1].strip()
         objectProduction = {}
 
         if nt in self.non_terminals:
