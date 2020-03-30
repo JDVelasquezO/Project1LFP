@@ -59,6 +59,9 @@ class AFD():
             
             return True
 
+    def getName(self):
+        return self.name
+
     def getStates(self):
         return self.states
     
@@ -73,6 +76,12 @@ class AFD():
 
     def getTransitions(self):
         return self.transitions
+
+    def onlyEvaluate(self, word):
+        for w in word:
+            if w not in self.alphabet:
+                return False
+        return True
 
     def evaluateString(self, words):
         actual = self.initialState

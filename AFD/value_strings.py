@@ -40,3 +40,8 @@ afd.setTransitions('H,I;v')
 afd.setTransitions('I,B;c')
 
 afd.evaluateString('vvvcvvvcvc')
+
+# if (afd.onlyEvaluate('pvvvcvvvcvc')):
+#     print("Cadena válida")
+# else:
+#     print("Cadena invalida")

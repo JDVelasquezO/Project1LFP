@@ -4,12 +4,14 @@ from Grammar.Grammar import Grammar
 class CreateGrammar():
     
     grammar = Grammar("")
+    array_grammar = []
 
     def name(self):
         os.system('clear')
         print('Bienvenido a Gramáticas')
         nameGrammar = input('Introduzca el nombre de la gramática: ')
         self.grammar = Grammar(nameGrammar)
+        self.array_grammar.append(self.grammar)
 
     def menuGrammar(self):
         while True:

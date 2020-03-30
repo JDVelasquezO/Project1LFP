@@ -1,16 +1,20 @@
 import os
 from AFD.AFD import AFD
-from press_enter import wait_for
 
 class CreateAFD:
 
     afd = AFD("")
+    array_afd = []
     
     def name(self):
         os.system('clear')
         print('Bienvenido a AFD')
         nameAFD = input('Introduzca el nombre del AFD: ')
         self.afd = AFD(nameAFD)
+        self.array_afd.append(self.afd)
+
+    def returnAFD(self):
+        return self.afd
 
     def menuAFD(self):
         while True:
