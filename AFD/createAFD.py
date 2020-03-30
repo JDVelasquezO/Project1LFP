@@ -25,20 +25,30 @@ class CreateAFD:
             
             os.system('clear')
             if opcAFD == 1:
-                n_states = int(input("Numero de estados: "))
-                i = 1
-                for i in range(n_states):
-                    state = input(f"Estado {i}: ")
-                    self.afd.setStates(state)
-                # state = input("Ingresar estado: ")
-                # self.afd.setStates(state)
+                # n_states = int(input("Numero de estados: "))
+                # i = 1
+                # for i in range(n_states):
+                #     state = input(f"Estado {i}: ")
+                #     self.afd.setStates(state)
+                state = input("Ingresar estado: ")
+                os.system('clear')
+                while (not self.afd.setStates(state)):
+                    print("Ese simbolo ya existe. Escribir otro:")
+                    state = input("Ingresar estado: ")
+                os.system('clear')
 
             if opcAFD == 2:
-                n_words = int(input("Numero de palabras en el alfabeto: "))
-                i = 1
-                for i in range(n_words):
-                    word = input(f"Palabra no {i}: ")
-                    self.afd.setAlphabet(word)
+                # n_words = int(input("Numero de palabras en el alfabeto: "))
+                # i = 1
+                # for i in range(n_words):
+                #     word = input(f"Palabra no {i}: ")
+                #     self.afd.setAlphabet(word)
+                word = input("Ingresar palabra de alfabeto: ")
+                os.system('clear')
+                while (not self.afd.setAlphabet(word)):
+                    print("Ese simbolo ya existe. Escribir otro:")
+                    word = input("Ingresar estado: ")
+                os.system('clear')
             
             if opcAFD == 3:
                 print("Estados existentes")
@@ -46,35 +56,40 @@ class CreateAFD:
                 for state in self.afd.getStates():
                     print(f"Estado {state}")
                 initial_state = input("Coloque el nombre del estado inicial: ")
-                self.afd.setInitialState(initial_state)
                 
                 if initial_state not in self.afd.getStates():
                     print(f"El estado {initial_state} no pertenece al conjunto de estados")
                 else:
-                    print(f"El estado {initial_state} es inicial ahora")
+                    self.afd.setInitialState(initial_state)
+                    os.system('clear')
 
             if opcAFD == 4:
                 print("Estados existentes")
                 for state in self.afd.getStates():
                     print(f"Estado {state}")
-                n_accept_state = int(input("Coloque el numero del estado de aceptación: "))
+                # n_accept_state = int(input("Coloque el numero del estado de aceptación: "))
 
-                i = 1
-                for i in range(n_accept_state):
-                    while True:
-                        state = input(f"Estado de aceptación {i}: ")
+                # i = 1
+                # for i in range(n_accept_state):
+                while True:
+                    state = input(f"Ingresar estado de aceptación: ")
+                    os.system('clear')
+                    while (not self.afd.setAcceptanceStates(state)):
+                        print("Error. Pruebe con otro estado ")
+                        state = input(f"Ingresar estado de aceptación: ")
+                    os.system('clear')
 
-                        if state not in self.afd.getStates():
-                            print(f"El estado {state} no pertenece al conjunto de estados")
-                        else:
-                            print(f"El estado {state} es de aceptación ahora")
-                            self.afd.setAcceptanceStates(state)
-                            break
+                    if state not in self.afd.getStates():
+                        print(f"El estado {state} no pertenece al conjunto de estados")
+                    else:
+                        self.afd.setAcceptanceStates(state)
+                        os.system('clear')
+                        break
             
             if opcAFD == 5:
                 print("1. Modo 1")
                 print("2. Modo 2")
-                mode = int(input("Escojer un modo de transiciones: "))
+                mode = int(input("Escojer un modo de ingresar transiciones: "))
 
                 if mode == 1:
                     print("Modo 1")
@@ -87,26 +102,30 @@ class CreateAFD:
                     for word in self.afd.getAlphabet():
                         print(f"Estado {word}")
                     
-                    n_transition = int(input("Numero de transiciones: "))
+                    # n_transition = int(input("Numero de transiciones: "))
 
-                    i = 1
-                    for i in range(n_transition):
-                        trans = input(f"Transicion {i}: ")
-                        self.afd.setTransitions(trans)
+                    # i = 1
+                    # for i in range(n_transition):
+                    trans = input(f"Ingresar Transicion: ")
+                    os.system('clear')
+                    while (not self.afd.setTransitions(trans)):
+                        print("Error en transición. Ingrese otra")
+                        trans = input(f"Ingresar Transicion: ")
+                        os.system('clear')
 
-                elif mode == 2:
-                    print("Modo 2")
-                    quantT = input("Ingresar cantidad de terminales: ")
-                    quantN = input("Ingresar la cantidad de no terminales: ")
+                # elif mode == 2:
+                #     print("Modo 2")
+                #     quantT = input("Ingresar cantidad de terminales: ")
+                #     quantN = input("Ingresar la cantidad de no terminales: ")
 
-                    tansitions = []
-                    trans = ""
+                #     tansitions = []
+                #     trans = ""
 
-                    matriz = []
-                    for i in range(quantT):
-                        matriz.append([])
-                        for j in range(quantN):
-                            matriz[i].append(None)
+                #     matriz = []
+                #     for i in range(quantT):
+                #         matriz.append([])
+                #         for j in range(quantN):
+                #             matriz[i].append(None)
 
             if opcAFD == 6:
                 words = input("Escriba la palabra a evaluar: ")

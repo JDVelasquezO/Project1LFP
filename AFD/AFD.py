@@ -11,36 +11,53 @@ class AFD():
         self.name = name
     
     def setStates(self, state):
-        self.states.append(state)
+        if state in self.states or state in self.alphabet:
+            return False
+        else:
+            self.states.append(state)
+            return True
 
     def setAlphabet(self, word):
-        self.alphabet.append(word)
+        if word in self.states or word in self.alphabet:
+            return False
+        else:
+            self.alphabet.append(word)
+            return True
 
     def setInitialState(self, state):
         if state in self.states:
             self.initialState = state
 
     def setAcceptanceStates(self, state):
-        if state in self.states:
-            self.acceptanceStates.append(state)
+        if state in self.acceptanceStates:
+            return False
+        else:
+            if state in self.states:
+                self.acceptanceStates.append(state)
+                return True
 
     def setTransitions(self, transition):
-        words = transition.split(";")
-        states = words[0]
-        
-        firstState = states.split(",")[0]
-        lastState = states.split(",")[1]
-        word = words[1]
-
-        if firstState in self.states and lastState in self.states and word in self.alphabet:
+        if transition in self.transitions:
+            return False
+        else:
+            words = transition.split(";")
+            states = words[0]
             
-            objectTransition = {
-                "fS": firstState,
-                "lS": lastState,
-                "t": word
-            }
+            firstState = states.split(",")[0]
+            lastState = states.split(",")[1]
+            word = words[1]
 
-            self.transitions.append(objectTransition)
+            if firstState in self.states and lastState in self.states and word in self.alphabet:
+                
+                objectTransition = {
+                    "fS": firstState,
+                    "lS": lastState,
+                    "t": word
+                }
+
+                self.transitions.append(objectTransition)
+            
+            return True
 
     def getStates(self):
         return self.states
