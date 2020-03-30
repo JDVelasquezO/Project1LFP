@@ -26,5 +26,14 @@ def menuValidateString(afd, gramm):
                         print("Cadena invalida")
             wait_for("", "\n")
 
+        if opc == 2:
+            name = input("Ingrese el nombre de la gramatica: ")
+            for item in afd.array_afd:
+                if (name == item.getName()):
+                    afdClass = afd.returnAFD()
+                    string = input("Ingrese la cadena a evaluar: ")
+                    print(afdClass.evaluateString(string))
+            wait_for("", "\n")
+
         if opc == 5:
             break

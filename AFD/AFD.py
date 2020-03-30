@@ -85,24 +85,30 @@ class AFD():
 
     def evaluateString(self, words):
         actual = self.initialState
-        for w in words:
-            if w in self.alphabet:
-                for item in self.transitions:
-                    if w == item['t']:
-                        first = item['fS']
-                        last = item['lS']
+        msgFinal = ""
 
-                        if first == actual:
-                            print(f"Cadena Correcta: {first} -> {last} por {w}")
-                            actual = last
+        if not self.onlyEvaluate(words):
+            msgFinal += "Error"
+        else:
+            for w in words:
+                if w in self.alphabet:
+                    for item in self.transitions:
+                        if w == item['t']:
+                            first = item['fS']
+                            last = item['lS']
 
-                            if actual in self.acceptanceStates:
-                                print("Se llego a  estado de aceptacion")
+                            if first == actual:
+                                msgFinal += f"{first},{last},{w};"
+                                # print(f"{first}, {last}, {w};")
+                                actual = last
+
+                                if actual in self.acceptanceStates:
+                                    # print("Se llego a  estado de aceptacion")
+                                    break
+
                                 break
 
-                            break
-
-            else:
-                print(f"{w} no pertenece al lenguaje")
-                break
+            msgFinal += " valida"
+            
+        return msgFinal
          
