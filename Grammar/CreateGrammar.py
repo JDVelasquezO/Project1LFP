@@ -1,5 +1,7 @@
-import os
-from Grammar.Grammar import Grammar
+import os, sys
+
+sys.path.append('./Grammar')
+from Grammar import Grammar
 
 class CreateGrammar():
     

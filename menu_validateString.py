@@ -1,6 +1,8 @@
-import os
+import os, sys
+
 from AFD.AFD import AFD
-from Grammar.Grammar import Grammar
+sys.path.append('./Grammar')
+from Grammar import Grammar
 from press_enter import wait_for
 
 def menuValidateString(afd, gramm):
@@ -57,6 +59,13 @@ def menuValidateString(afd, gramm):
                     gramClass = gramm.getGrammar()
                     string = input("Ingrese la cadena a evaluar: ")
                     print(gramClass.evaluateString(string))
+
+            for item in afd.array_afd:
+                if (name == item.getName()):
+                    afdClass = afd.returnAFD()
+                    string = input("Ingrese la cadena a evaluar: ")
+                    print(afdClass.transformGrammar(afdClass, string))
+             
             wait_for("", "\n")
 
         if opc == 4:
