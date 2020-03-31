@@ -51,6 +51,6 @@ afd.setTransitions('I,B;c')
 # else:
 #     print("Cadena invalida")
 
-# print(afd.evaluateString('cvcccvvvcvvvc'))
+print(afd.evaluateString('vvvcvvvcvc'))
 
-print(iclass.transformGrammar(afd, 'vvvcvvvcvc'))
+# print(iclass.transformGrammar(afd, 'vvvcvvvcvc'))
