@@ -126,6 +126,7 @@ class AFD():
         initial_nt = afd.initialState
         productions = afd.transitions
         epsilon_prod = ""
+        msg = ""
 
         for item in afd.getAcceptanceStates():
             prod = {
@@ -151,4 +152,11 @@ class AFD():
         for p in productions:
             grammar.setProductions(p['String'])
 
-        return grammar.evaluateString(string)
+        if (afd.onlyEvaluate(string)):
+            onlyValidate = "Cadena válida"
+        else:
+            onlyValidate = "Cadena invalida"
+
+        grammarExtended = grammar.evaluateString(string)
+        msg = f"{onlyValidate}\n{grammarExtended}"
+        return msg

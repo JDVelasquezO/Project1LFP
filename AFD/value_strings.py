@@ -49,4 +49,4 @@ afd.setTransitions('I,B;c')
 # vvvcvvvcvc Si llega
 # cvcccvvvcvvvc No llega
 
-print(afd.transformGrammar(afd, 'vvvcvvvcvc'))
+print(afd.transformGrammar(afd, 'cvcccvvvcvvvc'))
