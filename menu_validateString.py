@@ -1,9 +1,12 @@
 import os, sys
 
-from AFD.AFD import AFD
+sys.path.append('./AFD')
 sys.path.append('./Grammar')
+from AFD import AFD
 from Grammar import Grammar
+
 from press_enter import wait_for
+from IntermiddleClass.intermiddleClass import IntermiddleClass
 
 def menuValidateString(afd, gramm):
 
@@ -50,6 +53,14 @@ def menuValidateString(afd, gramm):
                     afdClass = afd.returnAFD()
                     string = input("Ingrese la cadena a evaluar: ")
                     print(afdClass.evaluateString(string))
+
+            for item in gramm.array_grammar:
+                if (name == item.getName()):
+                    gramClass = gramm.getGrammar()
+                    iClass = IntermiddleClass()
+                    string = input("Ingrese la cadena a evaluar: ")
+                    print(iClass.transformAFD(gramClass, string))
+            
             wait_for("", "\n")
 
         if opc == 3:
@@ -63,8 +74,9 @@ def menuValidateString(afd, gramm):
             for item in afd.array_afd:
                 if (name == item.getName()):
                     afdClass = afd.returnAFD()
+                    iClass = IntermiddleClass()
                     string = input("Ingrese la cadena a evaluar: ")
-                    print(afdClass.transformGrammar(afdClass, string))
+                    print(iClass.transformGrammar(afdClass, string))
              
             wait_for("", "\n")
 

@@ -26,7 +26,7 @@ class IntermiddleClass:
         for item in productions:
             item["String"] = f"{item['fS']}>{item['t']} {item['lS']}"
         
-        grammar = Grammar('gram1')
+        grammar = Grammar(afd.getName())
         for nt in non_terminals:
             grammar.setNonTerminals(nt)
         
@@ -50,7 +50,7 @@ class IntermiddleClass:
         initial_state = grammar.initial_non_terminal
         msg = ''
 
-        afd = AFD('afd1')
+        afd = AFD.AFD(grammar.getName())
 
         for item in states:
             afd.setStates(item)

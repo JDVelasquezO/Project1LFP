@@ -22,6 +22,6 @@ grammar.setProductions("B>0 B | B>1 A")
 # else:
 #     print("Cadena invalida")
 
-# print(grammar.evaluateString("0101"))
+print(grammar.evaluateString("0101"))
 
-print(iClass.transformAFD(grammar, '0101'))
+# print(iClass.transformAFD(grammar, '0101'))
