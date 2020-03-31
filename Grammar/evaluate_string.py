@@ -38,4 +38,4 @@ grammar.setProductions("H>v I | H>c B")
 # grammar.setProductions("H>c B")
 grammar.setProductions("I>c B")
 
-print(grammar.evaluateString("cvcccvvvcvvvc"))
+print(grammar.evaluateString("vvvcvvvcvc"))

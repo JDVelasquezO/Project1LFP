@@ -1,3 +1,7 @@
+import sys
+sys.path.append('./Grammar')
+from Grammar import Grammar
+
 class AFD():
 
     states = []
@@ -116,3 +120,35 @@ class AFD():
             
         return msgFinal
          
+    def transformGrammar(self, afd, string):
+        non_terminals = afd.states
+        terminals = afd.alphabet
+        initial_nt = afd.initialState
+        productions = afd.transitions
+        epsilon_prod = ""
+
+        for item in afd.getAcceptanceStates():
+            prod = {
+                'fS': item,
+                't': 'epsilon',
+                'lS': ""
+            }
+            # epsilon_prod = f"{item}>epsilon"
+            productions.append(prod)
+
+        for item in productions:
+            item["String"] = f"{item['fS']}>{item['t']} {item['lS']}"
+        
+        grammar = Grammar(self.name)
+        for nt in non_terminals:
+            grammar.setNonTerminals(nt)
+        
+        for t in terminals:
+            grammar.setTerminals(t)
+
+        grammar.setInitialNT(initial_nt)
+
+        for p in productions:
+            grammar.setProductions(p['String'])
+
+        return grammar.evaluateString(string)

@@ -1,5 +1,6 @@
 import os
 from AFD.AFD import AFD
+from Grammar.Grammar import Grammar
 from press_enter import wait_for
 
 def menuValidateString(afd, gramm):

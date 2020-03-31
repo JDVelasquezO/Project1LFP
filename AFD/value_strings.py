@@ -39,12 +39,14 @@ afd.setTransitions('H,B;c')
 afd.setTransitions('H,I;v')
 afd.setTransitions('I,B;c')
 
-if (afd.onlyEvaluate('cvcccvvvcvvvc')):
-    print("Cadena válida")
-else:
-    print("Cadena invalida")
+# if (afd.onlyEvaluate('cvcccvvvcvvvc')):
+#     print("Cadena válida")
+# else:
+#     print("Cadena invalida")
 
-print(afd.evaluateString('cvcccvvvcvvvc'))
+# print(afd.evaluateString('cvcccvvvcvvvc'))
 
 # vvvcvvvcvc Si llega
 # cvcccvvvcvvvc No llega
+
+print(afd.transformGrammar(afd, 'vvvcvvvcvc'))

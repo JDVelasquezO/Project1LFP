@@ -59,7 +59,7 @@ class Grammar():
         if production in self.productions:
             return False
         else:
-            if production.find("|"):
+            if "|" in production:
                 newProd = production.split("|")
                 for item in newProd:
                     production = item
