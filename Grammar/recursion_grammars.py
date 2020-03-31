@@ -24,4 +24,4 @@ grammar.setProductions("B>B s")
 grammar.setProductions("B>m")
 
 print(grammar.getTransformedGrammar("grammar1"))
-# grammar.evaluateString("a0010")
+print(grammar.evaluateString("a0010"))

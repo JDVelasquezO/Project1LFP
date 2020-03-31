@@ -47,7 +47,7 @@ class CreateGrammar():
                 # for i in range(n_T):
                 t = input(f"Ingresar Terminal: ")
                 os.system('clear')
-                while (self.grammar.setTerminals(t)):
+                while (not self.grammar.setTerminals(t)):
                     print("Elemento ya existente. Intente con otro")
                     t = input(f"Ingresar Terminal: ")
                 os.system('clear')
@@ -55,9 +55,13 @@ class CreateGrammar():
             if opcGram == 3:
                 init_nt = input("Digita el NT inicial: ")
                 os.system('clear')
-                while (not self.grammar.setInitialNT(init_nt)):
+
+                if (init_nt not in self.grammar.getNonTerminals()):
                     print("El NT no existe en el conjunto. Intente de nuevo")
                     init_nt = input("Digita el NT inicial: ")
+                else:
+                    self.grammar.setInitialNT(init_nt)
+
                 os.system('clear')
 
             if opcGram == 4:
@@ -68,9 +72,13 @@ class CreateGrammar():
                 # for i in range(n_prods):
                 prod = input(f"Ingresar Produccion: ")
                 os.system('clear')
-                while (not self.grammar.setProductions(prod)):
-                    print("La producción ya existe. Intente de nuevo")
-                os.system('clear')
+                while True: 
+                    if (prod in self.grammar.getProductions()):
+                        print("La producción ya existe. Intente de nuevo")
+                    else:
+                        self.grammar.setProductions(prod)
+                        break
+                # os.system('clear')
 
             if opcGram == 5:
                 name = input("Ingrese el nombre de la gramática: ")

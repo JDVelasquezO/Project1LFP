@@ -65,6 +65,7 @@ class CreateAFD:
                 
                 if initial_state not in self.afd.getStates():
                     print(f"El estado {initial_state} no pertenece al conjunto de estados")
+                    initial_state = input("Coloque el nombre del estado inicial: ")
                 else:
                     self.afd.setInitialState(initial_state)
                     os.system('clear')

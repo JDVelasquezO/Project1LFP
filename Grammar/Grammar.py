@@ -146,14 +146,6 @@ class Grammar():
             
         return unrepairedString + repairedString
 
-    # def onlyEvaluate(self, word):
-    #     for w in word:
-    #         if w not in self.non_terminals:
-    #             return False
-    #     if " No se llego a epsilon" in self.evaluateString(word):
-    #         return False
-    #     return True
-
     def onlyEvaluate(self, word):
         for item in self.non_terminals:
             if item not in self.non_terminals:

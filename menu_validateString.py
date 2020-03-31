@@ -31,10 +31,10 @@ def menuValidateString(afd, gramm):
                 if (name == item.getName()):
                     grammClass = gramm.getGrammar()
                     string = input("Ingrese la cadena a evaluar: ")
-                    # if (grammClass.):
-                    #     print("Cadena válida")
-                    # else:
-                    #     print("Cadena invalida")
+                    if (grammClass.onlyEvaluate(string)):
+                        print("Cadena válida")
+                    else:
+                        print("Cadena invalida")
                 else:
                     break
 
@@ -50,7 +50,13 @@ def menuValidateString(afd, gramm):
             wait_for("", "\n")
 
         if opc == 3:
-            print("En proceso...")
+            name = input("Ingrese el nombre de la gramatica: ")
+            for item in gramm.array_grammar:
+                if (name == item.getName()):
+                    gramClass = gramm.getGrammar()
+                    string = input("Ingrese la cadena a evaluar: ")
+                    print(gramClass.evaluateString(string))
+            wait_for("", "\n")
 
         if opc == 4:
             os.system('clear')
