@@ -104,8 +104,9 @@ class Grammar():
                     new_Prod["E"] = [f"{production['E'][1]}", f"{NT_derived}"]
                     new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E'][0]} {new_Prod['E'][1]}"
                     new_Prod_epsilon["NT"] = NT_derived
-                    new_Prod_epsilon["E"] = "epsilon"
+                    new_Prod_epsilon["E"] = ["epsilon"]
                     new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
+                    self.epsilon_prods.append(new_Prod_epsilon)
                     new_Prods.append(new_Prod)
                     new_Prods.append(new_Prod_epsilon)
                     saved_Prods.append(production)
@@ -181,6 +182,7 @@ class Grammar():
                 if item['E'][0] == 'epsilon':
                     msgFinal += f"{tActual}(epsilon) -> {words}"
                     signal = False
+                    break
         
         if signal:
             msgFinal += "No termina en epsilon"
