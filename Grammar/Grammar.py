@@ -6,6 +6,7 @@ class Grammar():
     productions = []
     initial_non_terminal = ""
     all_grams = []
+    epsilon_prods = []
 
     def __init__(self, name):
         self.name = name
@@ -46,6 +47,7 @@ class Grammar():
 
         if exp == "epsilon":
             objectProduction["E"].append(exp)
+            self.epsilon_prods.append(objectProduction)
         else:
             for e in exp:
                 if e in self.terminals or e in self.non_terminals:
@@ -144,8 +146,27 @@ class Grammar():
             
         return unrepairedString + repairedString
 
+    # def onlyEvaluate(self, word):
+    #     for w in word:
+    #         if w not in self.non_terminals:
+    #             return False
+    #     if " No se llego a epsilon" in self.evaluateString(word):
+    #         return False
+    #     return True
+
+    def onlyEvaluate(self, word):
+        for item in self.non_terminals:
+            if item not in self.non_terminals:
+                return False
+        if "No termina en epsilon" in self.evaluateString(word):
+            return False
+        return True
+
     def evaluateString(self, words):
         actual = self.initial_non_terminal
+        msgFinal = f"{actual} -> "
+        tActual = ""
+        signal = True
         for w in words:
             for item in self.productions:
                 if w == item['E'][0]:
@@ -154,10 +175,21 @@ class Grammar():
                         nextTerminal = item['E'][1]
 
                     if nowTerminal == actual:
-                        print(f"Orden correcto {nowTerminal} > {w} y va a {nextTerminal}")
+                        msgFinal += f"{tActual}{w}{nextTerminal} -> "
                         actual = nextTerminal
+                        tActual += w
+                        break
+            
+        for item in self.epsilon_prods:
+            if actual == item['NT']:
+                if item['E'][0] == 'epsilon':
+                    msgFinal += f"{tActual}(epsilon) -> {words}"
+                    signal = False
         
-        print(f"{actual} > epsilon")
+        if signal:
+            msgFinal += "No termina en epsilon"
+            
+        return msgFinal
 
     def setInitialNT(self, nt):
         self.initial_non_terminal = nt
