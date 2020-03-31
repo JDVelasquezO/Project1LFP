@@ -102,7 +102,7 @@ class Grammar():
 
                     new_Prod["NT"] = NT_derived
                     new_Prod["E"] = [f"{production['E'][1]}", f"{NT_derived}"]
-                    new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E']}"
+                    new_Prod["String"] = f"{new_Prod['NT']}>{new_Prod['E'][0]} {new_Prod['E'][1]}"
                     new_Prod_epsilon["NT"] = NT_derived
                     new_Prod_epsilon["E"] = "epsilon"
                     new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
@@ -126,7 +126,7 @@ class Grammar():
 
                             new_Grammar["NT"] = production["NT"]
                             new_Grammar["E"] = new_E
-                            new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E']}"
+                            new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E'][0]} {new_Grammar['E'][1]}"
                             new_Prods.append(new_Grammar)
                             productions.append(new_Grammar)
                             new_Grammar = {}

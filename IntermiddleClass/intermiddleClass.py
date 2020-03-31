@@ -50,7 +50,8 @@ class IntermiddleClass:
         initial_state = grammar.initial_non_terminal
         msg = ''
 
-        afd = AFD.AFD(grammar.getName())
+        # Agregar un AFD
+        afd = AFD(grammar.getName())
 
         for item in states:
             afd.setStates(item)
