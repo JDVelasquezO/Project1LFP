@@ -1,3 +1,7 @@
+import sys
+# sys.path.append('./AFD')
+# from AFD import AFD
+
 class Grammar():
     
     name = ""

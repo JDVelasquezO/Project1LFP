@@ -1,6 +1,10 @@
+import sys
 from AFD import AFD
+sys.path.append('./IntermiddleClass')
+from intermiddleClass import IntermiddleClass
 
 afd = AFD('afd1')
+iclass = IntermiddleClass()
 
 afd.setStates('A')
 afd.setStates('B')
@@ -39,6 +43,9 @@ afd.setTransitions('H,B;c')
 afd.setTransitions('H,I;v')
 afd.setTransitions('I,B;c')
 
+# vvvcvvvcvc Si llega
+# cvcccvvvcvvvc No llega
+
 # if (afd.onlyEvaluate('cvcccvvvcvvvc')):
 #     print("Cadena válida")
 # else:
@@ -46,7 +53,4 @@ afd.setTransitions('I,B;c')
 
 # print(afd.evaluateString('cvcccvvvcvvvc'))
 
-# vvvcvvvcvc Si llega
-# cvcccvvvcvvvc No llega
-
-print(afd.transformGrammar(afd, 'cvcccvvvcvvvc'))
+print(iclass.transformGrammar(afd, 'vvvcvvvcvc'))
