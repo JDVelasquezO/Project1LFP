@@ -1,10 +1,13 @@
 import sys
 from AFD.AFD import AFD
-from AFD.createAFD import CreateAFD
 from menu_validateString import menuValidateString
+sys.path.append('./IntermiddleClass')
+from intermiddleClass import IntermiddleClass
 
 def value_file(file, name):
     afd = AFD(name)
+    iClass = IntermiddleClass()
+
     lines = file.read().split("\n")
     states = []
     alphabet = []
@@ -84,6 +87,6 @@ def value_file(file, name):
     print("\n")
     print(afd.evaluateString(string))
     print("\n")
-    print(afd.transformGrammar(afd, string))
+    print(iClass.transformGrammar(afd, string))
 
     file.close()
