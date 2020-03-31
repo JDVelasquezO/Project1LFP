@@ -1,10 +1,11 @@
 import sys
+import os
 
 from AFD.createAFD import CreateAFD
 sys.path.append('./Grammar')
 from CreateGrammar import CreateGrammar
 from menu_validateString import menuValidateString
-import os
+from menu_files import menu_files
 
 def menu():    
     while True:
@@ -34,7 +35,8 @@ def menu():
             menuValidateString(afd, grammar)
         
         elif opc == 4:
-            
+            os.system('clear')
+            menu_files()
              
         if opc == 6:
             break

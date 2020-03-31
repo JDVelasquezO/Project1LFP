@@ -152,11 +152,6 @@ class AFD():
         for p in productions:
             grammar.setProductions(p['String'])
 
-        if (afd.onlyEvaluate(string)):
-            onlyValidate = "Cadena válida"
-        else:
-            onlyValidate = "Cadena invalida"
-
         grammarExtended = grammar.evaluateString(string)
-        msg = f"{onlyValidate}\n{grammarExtended}"
+        msg = f"{grammarExtended}"
         return msg

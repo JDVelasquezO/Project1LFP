@@ -75,4 +75,5 @@ def menuValidateString(afd, gramm):
             print("2")
 
         if opc == 5:
+            os.system('clear')
             break
