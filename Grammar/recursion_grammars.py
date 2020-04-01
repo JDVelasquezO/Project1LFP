@@ -27,7 +27,6 @@ grammar.setProductions("A>0")
 grammar.setProductions("B>B s")
 grammar.setProductions("B>m")
 
-print(grammar.getTransformedGrammar("grammar1"))
+# print(grammar.getTransformedGrammar("grammar1"))
 print(grammar.evaluateString("a0010"))
-print("\n")
 print(iClass.transformAFD(grammar, 'a0010'))

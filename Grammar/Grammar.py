@@ -162,8 +162,16 @@ class Grammar():
         return True
 
     def evaluateString(self, words):
+
+        msgFinal = ""
+
+        for item in self.productions:
+            if item['NT'] == item['E'][0]:
+                msgFinal += f"{self.getTransformedGrammar(self.name)} \n"
+                break
+
         actual = self.initial_non_terminal
-        msgFinal = f"{actual} -> "
+        msgFinal += f"{actual} -> "
         tActual = ""
         signal = True
         for w in words:
