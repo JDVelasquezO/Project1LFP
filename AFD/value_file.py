@@ -1,8 +1,11 @@
-import sys
+import sys, os
+
 from AFD.AFD import AFD
-from menu_validateString import menuValidateString
 sys.path.append('./IntermiddleClass')
 from intermiddleClass import IntermiddleClass
+
+from menu_validateString import menuValidateString
+from press_enter import wait_for
 
 def value_file(file, name):
     afd = AFD(name)
@@ -81,12 +84,14 @@ def value_file(file, name):
 
     string = input('Ingresar la cadena a evaluar: ')
     if (afd.onlyEvaluate(string)):
-        print("Cadena válida")
+        print("----------------------Cadena válida----------------------")
     else:
-        print("Cadena invalida")
-    print("\n")
-    print(afd.evaluateString(string))
-    print("\n")
-    print(iClass.transformGrammar(afd, string))
+        print("----------------------Cadena invalida----------------------")
 
+    print("\n----------------------Ruta en AFD----------------------")
+    print(afd.evaluateString(string))
+    print("\n----------------------Convertido en Expansión Gramática----------------------")
+    print(iClass.transformGrammar(afd, string))
     file.close()
+    wait_for("Presionar enter para continuar", "\n")
+    os.system('clear')

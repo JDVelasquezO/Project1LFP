@@ -1,5 +1,7 @@
-import os
+import os, sys
 from AFD.value_file import value_file
+sys.path.append('./Grammar')
+from value_grammar import value_grammar
 from menu_validateString import menuValidateString
 
 def menu_files():    
@@ -16,7 +18,17 @@ def menu_files():
             name = routeArray[-1].split(".")[0]
             file = open(route, 'r')
             print('Archivo cargado correctamente\n')
+            os.system('clear')
             value_file(file, name)
+
+        if opc == 2:
+            route = './files/test.grm'
+            routeArray = route.split('/')
+            name = routeArray[-1].split(".")[0]
+            file = open(route, 'r')
+            print('Archivo cargado correctamente\n')
+            os.system('clear')
+            value_grammar(file, name)
         
         if opc == 3:
             os.system('clear')

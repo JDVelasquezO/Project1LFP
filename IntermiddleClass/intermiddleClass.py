@@ -51,7 +51,7 @@ class IntermiddleClass:
         msg = ''
 
         # Agregar un AFD
-        afd = AFD(grammar.getName())
+        afd = AFD.AFD(grammar.getName())
 
         for item in states:
             afd.setStates(item)
