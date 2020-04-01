@@ -108,6 +108,7 @@ class Grammar():
                     new_Prod_epsilon["String"] = f"{new_Prod['NT']}>epsilon"
                     self.epsilon_prods.append(new_Prod_epsilon)
                     new_Prods.append(new_Prod)
+                    self.non_terminals.append(new_Prod['NT'])
                     new_Prods.append(new_Prod_epsilon)
                     saved_Prods.append(production)
                     
@@ -129,6 +130,7 @@ class Grammar():
                             new_Grammar["E"] = new_E
                             new_Grammar["String"] = f"{new_Grammar['NT']}>{new_Grammar['E'][0]} {new_Grammar['E'][1]}"
                             new_Prods.append(new_Grammar)
+                            self.non_terminals.append(new_Grammar['NT'])
                             productions.append(new_Grammar)
                             new_Grammar = {}
                             break

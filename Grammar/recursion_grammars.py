@@ -1,6 +1,10 @@
+import sys
 from Grammar import Grammar
+sys.path.append('./IntermiddleClass')
+from intermiddleClass import IntermiddleClass
 
 grammar = Grammar("grammar1")
+iClass = IntermiddleClass()
 
 grammar.setNonTerminals("A")
 grammar.setNonTerminals("B")
@@ -25,3 +29,5 @@ grammar.setProductions("B>m")
 
 print(grammar.getTransformedGrammar("grammar1"))
 print(grammar.evaluateString("a0010"))
+print("\n")
+print(iClass.transformAFD(grammar, 'a0010'))

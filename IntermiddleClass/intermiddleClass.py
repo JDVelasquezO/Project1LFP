@@ -67,9 +67,10 @@ class IntermiddleClass:
 
         for item in transitions:
             # print(item)
-            if item['E'][0] != 'epsilon':
-                trans = f"{item['NT']},{item['E'][1]};{item['E'][0]}"
-                afd.setTransitions(trans)
+            if len(item['E']) > 1:
+                if item['E'][0] != 'epsilon':
+                    trans = f"{item['NT']},{item['E'][1]};{item['E'][0]}"
+                    afd.setTransitions(trans)
         
         msg += afd.evaluateString(string)
         return msg
