@@ -26,12 +26,15 @@ def value_grammar(file, name):
         non_terminals.append(non_terminal)
 
         produceds = arrayLine[1]
-        if produceds != 'epsilon':  
-            terminal = produceds[0]
-            terminals.append(terminal)
+        if produceds != 'epsilon':
+            terminalOne = produceds[0]
+            if terminalOne == terminalOne.lower():
+                terminals.append(terminalOne)
 
-        last_non_terminal = produceds[2]
-        non_terminals.append(last_non_terminal)
+            if len(produceds) > 1:
+                terminalTwo = produceds[2]
+                if terminalTwo == terminalTwo.lower():
+                    terminals.append(terminalTwo)
 
         productions.append(line)
 
